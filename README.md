@@ -10,4 +10,8 @@ Cybersecurity playbook with techniques, tools, and notes for penetration testing
 - [Maintaining Access](./maintaining-access.md) - Maintaining access and privilege escalation
 - [Reporting](./reporting.md) - Report writing and documentation
 
+## External resources
+
+- [External resources](./resources.md) - General external guides and links
+
 ---
