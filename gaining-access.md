@@ -2,4 +2,4 @@
 
 ## To test
 
-- [ ] SSRF (see [resources.md](./resources.md))
+- [ ] SSRF
