@@ -13,6 +13,7 @@ General links not tied to a single playbook phase.
 - [OWASP Web Security Testing Guide (WSTG)](https://owasp.org/www-project-web-security-testing-guide/) — Comprehensive methodology for testing the security of web applications, covering information gathering, configuration, authentication, session management, input validation, and more.
 - [OWASP Mobile Application Security Testing Guide (MASTG)](https://github.com/OWASP/mastg) — Comprehensive manual for mobile app security testing and reverse engineering, covering Android and iOS.
 - [OWASP AI Testing Guide](https://owasp.org/www-project-ai-testing-guide/) — Methodology and best practices for testing the security of AI/ML systems and applications.
+- [OWASP SSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html) — Defense-oriented reference for Server-Side Request Forgery: allowlisting strategies, network-layer controls, and common pitfalls in blocklist-based mitigations. Useful counterpart to the offensive notes in [gaining-access.md](./gaining-access.md).
 
 ## Other
 
