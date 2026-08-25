@@ -17,6 +17,10 @@ curl "https://target.com/fetch?url=http://<your-collab-server>/probe"
 
 Use a listener like `interactsh`, Burp Collaborator, or a simple `nc -lvnp 80` / `python3 -m http.server` on a public IP to confirm out-of-band interaction.
 
+**Blind vs. non-blind SSRF:**
+- **Non-blind** — the response of the fetched resource is reflected back in the app (e.g. a URL previewer showing page content). Full read access to whatever the server can reach.
+- **Blind** — no response is returned to you, only the fact that a request was made (confirmed via out-of-band callback). Exploitation is limited to side effects: port scanning via response-time/error differences, triggering actions on internal services, or, with metadata endpoints, exfiltrating data indirectly (e.g. forcing the app to email/log the fetched content).
+
 **Common targets once SSRF is confirmed:**
 
 ```text
